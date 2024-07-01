@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>W1.Tutorials</title>
+</head>
+<body>
+    <div class="calendar">
+        <!-- head -->
+        <div class="header">
+            <div class="cell"></div>
+            <div class="cell">Mon 17</div>
+            <div class="cell">Tue 18</div>
+            <div class="cell">Wed 19</div>
+            <div class="cell">Thu 20</div>
+            <div class="cell">Fri 21</div>
+            <div class="cell">Sat 22</div>
+            <div class="cell">Sun 23</div>
+        </div>
+        <div class="body">
+            <!-- row 1 -->
+            <div class="row">
+                <div class="cell time">8 AM</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <!-- row 2 -->
+            <div class="row">
+                <div class="cell time">9 AM</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <!-- row 3 -->
+            <div class="row">
+                <div class="cell time">10 AM</div>
+                <div class="cell event" data-details="PhD Sonificatio">PhD Sonificatio</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+
+            <!-- row 4 -->
+            <div class="row">
+                <div class="cell time">11 AM</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+
+            <!-- row 5 -->
+            <div class="row">
+                <div class="cell time">12 PM</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell event" data-details="Microsoft Teams Huonq Ha">Fortnightly catch Microsoft Teams Huonq Ha</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+
+            <!-- row 6 -->
+            <div class="row">
+                <div class="cell time">1 PM</div>
+                <div class="cell"></div>
+                <div class="cell event" data-details="Microsoft Teams Tunq Nquyen">TungNguyen - Ph Microsoft Teams Tunq Nquyen</div>
+                <div class="cell event" data-details="Practical research inteqrity: Office for Research">Practical research inteqrity: Office for Research</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+
+            <!-- row 5 -->
+            <div class="row">
+                <div class="cell time">2 PM</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+
+            <!-- row 5 -->
+            <div class="row">
+                <div class="cell time">3 PM</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+
+            <!-- row 5 -->
+            <div class="row">
+                <div class="cell time">4 PM</div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-details" class="event-details"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const eventCells = document.querySelectorAll('.event');
+            const eventDetailsDiv = document.getElementById('event-details');
+
+            eventCells.forEach(cell => {
+                cell.addEventListener('click', function(event) {
+                    const details = event.target.getAttribute('data-details');
+                    const rect = event.target.getBoundingClientRect();
+                    eventDetailsDiv.innerHTML = details;
+                    eventDetailsDiv.style.top = `${rect.bottom + window.scrollY}px`;
+                    eventDetailsDiv.style.left = `${rect.left + window.scrollX}px`;
+                    eventDetailsDiv.style.display = 'block';
+                });
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!event.target.classList.contains('event')) {
+                    eventDetailsDiv.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
